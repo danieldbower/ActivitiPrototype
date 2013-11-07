@@ -163,3 +163,9 @@ environments {
 	}
 }
 
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'myapp.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'myapp.UserRole'
+grails.plugins.springsecurity.authority.className = 'myapp.Role'
+grails.plugins.springsecurity.useSecurityEventListener = true
