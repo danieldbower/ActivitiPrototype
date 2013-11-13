@@ -26,15 +26,16 @@ import org.grails.activiti.ActivitiConstants
 class VacationRequestController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-	  static activiti = true
+	
+	static activiti = true
 
     def index = {
         redirect(action: "list", params: params)
     }
 
     def start = {
-				start(params)
-		}
+		start(params)
+	}
 	
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)

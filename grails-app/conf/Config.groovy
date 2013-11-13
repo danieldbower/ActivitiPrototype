@@ -59,32 +59,6 @@ grails.exceptionresolver.params.exclude = ['password']
 // configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
 grails.hibernate.cache.queries = false
 
-grails.plugins.dynamicController.mixins = [
-	'com.burtbeckwith.grails.plugins.appinfo.IndexControllerMixin':
-	   'com.burtbeckwith.appinfo_test.AdminManageController',
-  
-	'com.burtbeckwith.grails.plugins.appinfo.Log4jControllerMixin' :
-	   'com.burtbeckwith.appinfo_test.AdminManageController',
-  
-	'com.burtbeckwith.grails.plugins.appinfo.SpringControllerMixin' :
-	   'com.burtbeckwith.appinfo_test.AdminManageController',
-  
-	'com.burtbeckwith.grails.plugins.appinfo.MemoryControllerMixin' :
-	   'com.burtbeckwith.appinfo_test.AdminManageController',
-  
-	'com.burtbeckwith.grails.plugins.appinfo.PropertiesControllerMixin' :
-	   'com.burtbeckwith.appinfo_test.AdminManageController',
-  
-	'com.burtbeckwith.grails.plugins.appinfo.ScopesControllerMixin' :
-	   'com.burtbeckwith.appinfo_test.AdminManageController',
-  
-	'com.burtbeckwith.grails.plugins.appinfo.ThreadsControllerMixin' :
-	   'com.burtbeckwith.appinfo_test.AdminManageController',
-  
-	'app.info.custom.example.MyConfigControllerMixin' :
-	   'com.burtbeckwith.appinfo_test.AdminManageController'
- ]
-
 environments {
     development {
         grails.logging.jul.usebridge = true
@@ -107,6 +81,8 @@ log4j = {
 	
 	info 'liquibase'
 	
+	info 'org.activiti'
+	
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -125,20 +101,20 @@ log4j = {
 // Added by the Grails Activiti plugin:
 activiti {
 	processEngineName = "activiti-engine-default"
-	  databaseType = "h2"
-	  deploymentName = appName
-	  deploymentResources = ["file:./grails-app/conf/**/*.bpmn*.xml",
+	databaseType = "h2"
+	deploymentName = appName
+	deploymentResources = ["file:./grails-app/conf/**/*.bpmn*.xml",
 							 "file:./grails-app/conf/**/*.png",
 							 "file:./src/taskforms/**/*.form"]
-	  jobExecutorActivate = false
-	  mailServerHost = "smtp.yourserver.com"
-	  mailServerPort = "25"
-	  mailServerUsername = ""
-	  mailServerPassword = ""
-	  mailServerDefaultFrom = "username@yourserver.com"
-	  history = "audit" // "none", "activity", "audit" or "full"
-	  sessionUsernameKey = "username"
-	  useFormKey = true
+	jobExecutorActivate = false
+	mailServerHost = "smtp.yourserver.com"
+	mailServerPort = "25"
+	mailServerUsername = ""
+	mailServerPassword = ""
+	mailServerDefaultFrom = "username@yourserver.com"
+	history = "audit" // "none", "activity", "audit" or "full"
+	sessionUsernameKey = "username"
+	useFormKey = true
 }
 
 environments {

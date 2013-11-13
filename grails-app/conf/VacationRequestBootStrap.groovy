@@ -12,7 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import myapp.*
+
+import myapp.Role
+import myapp.User
+import myapp.UserRole
 
 /**
  *
@@ -44,11 +47,13 @@ class VacationRequestBootStrap {
 		def userRole = Role.findByAuthority('ROLE_USER') 
 		if (!userRole) {
 		 userRole = new Role(authority: 'ROLE_USER', name: 'User')
+		 userRole.id = 'ROLE_USER'
 		 userRole.save(failOnError: true)
 		}
 		def managerRole = Role.findByAuthority('ROLE_MANAGER') 
 		if (!managerRole) {
 		 managerRole = new Role(authority: 'ROLE_MANAGER', name: 'Manager')
+		 managerRole.id = 'ROLE_MANAGER'
 		 managerRole.save(failOnError: true)
 		}
 		def kermit = User.findByUsername('kermit') ?: new User(

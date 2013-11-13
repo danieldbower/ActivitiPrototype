@@ -28,7 +28,7 @@ class Role implements org.activiti.engine.identity.Group {
         
         static mapping = {
                 cache true
-                id generator: 'uuid'
+                id generator: 'assigned'
         }
 
         static constraints = {
