@@ -102,7 +102,11 @@ log4j = {
     //appenders {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
-
+	debug 'myapp', "grails.app"
+	info 'org.springframework.security'
+	
+	info 'liquibase'
+	
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -113,14 +117,11 @@ log4j = {
            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
            'org.springframework',
            'org.hibernate',
-           'net.sf.ehcache.hibernate'
+           'net.sf.ehcache.hibernate',
+                   'grails.app.services.org.grails.plugin.resource',
+                   'grails.app.taglib.org.grails.plugin.resource',
+                   'grails.app.resourceMappers.org.grails.plugin.resource'
 }
-
-// Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'myapp.User'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'myapp.UserRole'
-grails.plugins.springsecurity.authority.className = 'myapp.Role'
-
 // Added by the Grails Activiti plugin:
 activiti {
 	processEngineName = "activiti-engine-default"
@@ -162,7 +163,6 @@ environments {
 		}
 	}
 }
-
 
 // Added by the Spring Security Core plugin:
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'myapp.User'

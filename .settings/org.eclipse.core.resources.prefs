@@ -1,4 +1,8 @@
 eclipse.preferences.version=1
+encoding//.link_to_grails_plugins/activiti-5.12.1/grails-app/i18n=UTF-8
+encoding//.link_to_grails_plugins/activiti-5.12.1/grails-app/i18n/messages.properties=UTF-8
+encoding//.link_to_grails_plugins/activiti-spring-security-0.5.0/grails-app/i18n=UTF-8
+encoding//.link_to_grails_plugins/activiti-spring-security-0.5.0/grails-app/i18n/messages.properties=UTF-8
 encoding//.link_to_grails_plugins/resources-1.2/grails-app/i18n=UTF-8
 encoding//.link_to_grails_plugins/resources-1.2/grails-app/i18n/messages.properties=UTF-8
 encoding//.link_to_grails_plugins/spring-security-core-1.2.7.3/grails-app/i18n=UTF-8

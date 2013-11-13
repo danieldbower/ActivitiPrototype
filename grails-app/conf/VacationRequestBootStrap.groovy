@@ -56,21 +56,21 @@ class VacationRequestBootStrap {
 				email: 'kermit@activiti.org',
 				firstName: 'Kermit',
 				lastName: 'User',
-				password: springSecurityService.encodePassword('kermit'),
+				password: 'kermit',
 				enabled: true).save(failOnError: true)
 		def fozzie = User.findByUsername('fozzie') ?: new User(
 				username: 'fozzie',
 				email: 'fozzie@activiti.org',
 				firstName: 'Fozzie',
 				lastName: 'Management',
-				password: springSecurityService.encodePassword('fozzie'),
+				password: 'fozzie',
 				enabled: true).save(failOnError: true)
 		def peter = User.findByUsername('peter') ?: new User(
 				username: 'peter',
 				email: 'peter@activiti.org',
 				firstName: 'Peter',
 				lastName: 'Management',
-				password: springSecurityService.encodePassword('peter'),
+				password: 'peter',
 				enabled: true).save(failOnError: true)
 		
 		if (!kermit.authorities.contains(userRole)) {
