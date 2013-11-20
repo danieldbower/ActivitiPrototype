@@ -1,7 +1,11 @@
 TAG 00_BASE_INSTALL:  This is the minimum needed to run the Activiti Plugin.  Implemented following: https://code.google.com/p/grails-activiti-plugin/wiki/VacationRequestSampleApplication.
 
-Running 
-grails test-app 
-will run some tests, including some tweaked examples from the Activiti in Action book from Manning.
+Additionally, I'm in the process of tweaking some of the templating code provided by the Activiti Plugin to make it conform to current Grails standards.
 
-Checkout this repository and run "grails run-app".  You should then be able to follow the examples.
+Running Tests: 
+grails test-app 
+will run some tests, including some heavily tweaked examples from the Activiti in Action book from Manning.
+
+Run the Grails Activiti Plugin Vacation Request Example App
+grails run-app  
+You should then be able to follow the documentation at https://code.google.com/p/grails-activiti-plugin/wiki/VacationRequestSampleApplication
