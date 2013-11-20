@@ -38,7 +38,7 @@ class VacationRequestBootStrap {
 		 }
 		 */    
 		environments {			
-			production { createUsersAndGroups() }
+			test{ createUsersAndGroups() }
 			development { createUsersAndGroups() }
 		}
 	}

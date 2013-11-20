@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:activiti="http://activiti.org/bpmn" 
+	xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" 
+	xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" 
+	xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" 
+	typeLanguage="http://www.w3.org/2001/XMLSchema" 
+	expressionLanguage="http://www.w3.org/1999/XPath" 
+	targetNamespace="http://activiti.org/bpmn20">
+	
+	<process id="bookorder" name="Order book" isExecutable="true">
+		<startEvent id="start" name="Start"/>
+		
+		<sequenceFlow id="flow1" name="Validate order" 
+			sourceRef="start" targetRef="script"/>
+		<scriptTask id="script" name="Validate order" scriptFormat="groovy">
+			<script>out.println "validating order for isbn $isbn"</script>
+		</scriptTask>
+		
+		<sequenceFlow id="flow2" sourceRef="script" targetRef="userTask"/>
+		<userTask id="userTask" name="Work on order">
+			<documentation>User task during book order</documentation>
+			<potentialOwner>
+				<resourceAssignmentExpression>
+					<formalExpression>ROLE_USER</formalExpression>
+				</resourceAssignmentExpression>
+			</potentialOwner>
+		</userTask>
+		
+		<sequenceFlow id="flow3" sourceRef="userTask" targetRef="endevent"/>
+		<endEvent id="endevent" name="End"/>
+	</process>
+</definitions>
