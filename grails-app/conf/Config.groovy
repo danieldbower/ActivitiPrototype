@@ -104,8 +104,9 @@ activiti {
 	databaseType = "h2"
 	deploymentName = appName
 	deploymentResources = ["file:./grails-app/conf/**/*.bpmn*.xml",
-							 "file:./grails-app/conf/**/*.png",
-							 "file:./src/taskforms/**/*.form"]
+							"file:./grails-app/conf/**/*.bpmn",
+							"file:./grails-app/conf/**/*.png",
+							"file:./src/taskforms/**/*.form"]
 	jobExecutorActivate = false
 	mailServerHost = "smtp.yourserver.com"
 	mailServerPort = "25"
