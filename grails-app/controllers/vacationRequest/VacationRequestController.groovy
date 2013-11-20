@@ -14,9 +14,9 @@
  */
 package vacationRequest
 
-import org.grails.activiti.ApprovalStatus
-import org.codehaus.groovy.grails.commons.ConfigurationHolder as CH
+import org.codehaus.groovy.grails.commons.GrailsApplication
 import org.grails.activiti.ActivitiConstants
+import org.grails.activiti.ApprovalStatus
   /**
  *
  * @author <a href='mailto:limcheekin@vobject.com'>Lim Chee Kin</a>
@@ -25,35 +25,37 @@ import org.grails.activiti.ActivitiConstants
  */
 class VacationRequestController {
 
+	GrailsApplication grailsApplication 
+	
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
 	static activiti = true
 
-    def index = {
-        redirect(action: "list", params: params)
-    }
-
-    def start = {
+	def begin(){
 		start(params)
 	}
 	
-    def list = {
+    def index() {
+        redirect(action: "list", params: params)
+    }
+
+    def list() {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [vacationRequestInstanceList: VacationRequest.list(params), 
 				vacationRequestInstanceTotal: VacationRequest.count(),
 				myTasksCount: assignedTasksCount]				
     }
 
-    def create = {
+    def create() {
         def vacationRequestInstance = new VacationRequest()
-        String sessionUsernameKey = CH.config.activiti.sessionUsernameKey?:ActivitiConstants.DEFAULT_SESSION_USERNAME_KEY
+        String sessionUsernameKey = grailsApplication.config.activiti.sessionUsernameKey?:ActivitiConstants.DEFAULT_SESSION_USERNAME_KEY
 				vacationRequestInstance.employeeName = session[sessionUsernameKey]
         vacationRequestInstance.properties = params
         return [vacationRequestInstance: vacationRequestInstance,
                 myTasksCount: assignedTasksCount]
     }
 
-    def save = {		
+    def save() {		
         def vacationRequestInstance = new VacationRequest(params)
         if (vacationRequestInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'vacationRequest.label', default: 'VacationRequest'), vacationRequestInstance.id])}"
@@ -72,7 +74,7 @@ class VacationRequestController {
         }
     }
 
-    def show = {
+    def show() {
         def vacationRequestInstance = VacationRequest.get(params.id)
         if (!vacationRequestInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'vacationRequest.label', default: 'VacationRequest'), params.id])}"
@@ -84,12 +86,12 @@ class VacationRequestController {
         }
     }
 	
-   def approval = {
+   def approval() {
         show()
       }	
 
 	    
-   def performApproval = {
+   def performApproval() {
         def vacationRequestInstance = VacationRequest.get(params.id)
         if (vacationRequestInstance) {
             if (params.version) {
@@ -131,7 +133,7 @@ class VacationRequestController {
         }
       }	
 
-    def edit = {
+    def edit() {
         def vacationRequestInstance = VacationRequest.get(params.id)
         if (!vacationRequestInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'vacationRequest.label', default: 'VacationRequest'), params.id])}"
@@ -143,7 +145,7 @@ class VacationRequestController {
         }
     }
 
-    def update = {			
+    def update() {			
         def vacationRequestInstance = VacationRequest.get(params.id)
         if (vacationRequestInstance) {
             if (params.version) {
@@ -180,7 +182,7 @@ class VacationRequestController {
         }
     }
 
-    def delete = {
+    def delete() {
         def vacationRequestInstance = VacationRequest.get(params.id)
         if (vacationRequestInstance) {
             try {

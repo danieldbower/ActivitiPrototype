@@ -24,6 +24,7 @@
 <%@ page import="org.grails.activiti.ActivitiConstants" %>
 
 <g:set var="sessionUsernameKey" value="${ConfigurationHolder.config.activiti.sessionUsernameKey?:ActivitiConstants.DEFAULT_SESSION_USERNAME_KEY}" />
+<!DOCTYPE html>
 <html>
     <head>
         <title>Welcome to Grails Activiti Plugin</title>
@@ -88,6 +89,7 @@
 						<li>Grails version: <g:meta name="app.grails.version"/></li>
 						<li>Groovy version: ${GroovySystem.getVersion()}</li>
 						<li>JVM version: ${System.getProperty('java.version')}</li>
+						<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
 						<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
                         <li>Domains: ${grailsApplication.domainClasses.size()}</li>
                         <li>Services: ${grailsApplication.serviceClasses.size()}</li>
@@ -162,7 +164,7 @@
                     		<g:if test="${c.hasProperty('activiti') && c.clazz.activiti}">
                        	 <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link> 
                        	 	<g:if test="${!c.logicalPropertyName.equals('task')}">
-                       	 		[<g:link controller="${c.logicalPropertyName}" action="start">Start</g:link>]
+                       	 		[<g:link controller="${c.logicalPropertyName}" action="begin">Start</g:link>]
                        	 	</g:if>
                        	</li>
                        	</g:if>
